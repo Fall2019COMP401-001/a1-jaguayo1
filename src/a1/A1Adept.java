@@ -92,14 +92,14 @@ public class A1Adept {
 
 		// Print and display information
 		//Biggest:
-		System.out.print("Biggest: " + maxCustomer + " ");
+		System.out.print("Biggest: " + maxCustomer + " (");
 		System.out.printf("%.2f", maxValue);
-		System.out.print("\n");
+		System.out.print(")\n");
 		
 		//Smallest:
-		System.out.print("Smallest: " + minCustomer + " ");
+		System.out.print("Smallest: " + minCustomer + " (");
 		System.out.printf("%.2f", minValue);
-		System.out.print("\n");
+		System.out.print(")\n");
 
 		//Average
 		System.out.printf("Average: %.2f", average);

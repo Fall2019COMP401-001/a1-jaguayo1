@@ -113,10 +113,10 @@ public class A1Adept {
 	 * input: an Array of String values, an array of Double values, A String to
 	 * price search
 	 * 
-	 * output: The price associated with the String. A double value. Returns -1 if
-	 * the item is not in the array.
+	 * output: The price associated with the String. A double value.
 	 * 
-	 * Precondition: Both arrays must not be null and must contain one value
+	 * Precondition: Both arrays must not be null and must contain one value. The String
+	 * given must be within the String array.
 	 */
 	static double getPrice(String[] productList, double[] retailPrices, String productName) {
 

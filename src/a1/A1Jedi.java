@@ -12,7 +12,8 @@ public class A1Jedi {
 		// Record number of items in store.
 		int count = scan.nextInt();
 
-		// Create two arrays to store names and count
+		// Create arrays to store item names, quantities sold,
+		// number of customers purchasing item.
 		String[] productNames = new String[count];
 		int[] productCount = new int[count];
 		int[] customerCount = new int[count];
@@ -36,8 +37,9 @@ public class A1Jedi {
 			// Record number of items purchased
 			int numItemsPurchased = scan.nextInt();
 			
-			//Temp array
-			String[] notPurchasedBefore = productNames.clone();
+			// Create an array, to keep track of
+			// purchase history.
+			boolean[] customerBoughtBefore = new boolean[count];
 
 			// Initiate a loop to store information for each item purchased
 			for (int j = 0; j < numItemsPurchased; j++) {
@@ -59,8 +61,9 @@ public class A1Jedi {
 
 				// Increment number of customers
 				// purchasing given item only once per customer.
-				if (isUnique(notPurchasedBefore, itemName)) {
+				if (!customerBoughtBefore[itemIndex]) {
 					customerCount[itemIndex] += 1;
+					customerBoughtBefore[itemIndex] = true;
 				}
 
 			}
@@ -73,16 +76,14 @@ public class A1Jedi {
 	}
 
 	/*
-	 * updateCount takes in an array of names (String) and an array of counts (int),
-	 * a String and and a quantity. It increases the quantity of the String by the
-	 * quantity given.
+	 * getItemIndex takes in an array of Strings and String. It searches the array
+	 * for the string and returns the index where its found.
 	 * 
-	 * input: an array of String values, an array of Double values, A String and a
-	 * an integer.
+	 * input: an array of String values and a String.
 	 * 
-	 * output: None. Void function. A double value.
+	 * output: The index where the String is located (int).
 	 * 
-	 * Precondition: Both arrays must not be null and must contain one value. The
+	 * Precondition: Array must not be null and must contain at least one value. The
 	 * input String must be within the String array.
 	 */
 	static int getItemIndex(String[] productList, String productName) {
@@ -98,26 +99,6 @@ public class A1Jedi {
 		return index;
 	}
 	
-	/*
-	 * isUnique takes in an array of Strings and a String. It searches for the String in the array, if it is
-	 * not there, it adds it and returns true.
-	 * 
-	 * input: String array with items previously purchased by the customer.
-	 * item purchased by customer.
-	 * 
-	 * output: true if the item hasn't been purchased before by this client.
-	 * false if the item has been previously purchased by client.
-	 */
-	 static boolean isUnique(String[] previouslyPurchased, String newItem) {
-		 for (int i = 0; i < previouslyPurchased.length; i++) {
-			 if (previouslyPurchased[i].equals(newItem)) {
-				previouslyPurchased[i] = " "; 
-			 	return true;
-		 }
-			}
-		 return false;
-	 } 
-
 	/*
 	 * displayOutput takes in an array of product names and an array of counters and
 	 * prints
